@@ -1,0 +1,107 @@
+gingSystem\MainPage.xaml
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:vm="clr-namespace:ClothesTagger.ViewModels"
+             x:Class="ClothesTagger.MainPage">
+
+    <ContentPage.BindingContext>
+        <vm:MainViewModel />
+    </ContentPage.BindingContext>
+
+    <ScrollView>
+        <VerticalStackLayout Padding="20" Spacing="16">
+            <Label Text="Clothing Tagger" FontAttributes="Bold" FontSize="20"/>
+
+            <Frame HeightRequest="250" BorderColor="Gray">
+                <Image Source="{Binding SelectedImagePath}" Aspect="AspectFill"/>
+            </Frame>
+
+            <Button Text="Pick Clothing Image" Command="{Binding PickImageCommand}" />
+
+            <Label Text="Suggested Tags:" FontAttributes="Bold" />
+            <Label Text="{Binding PendingTagsDisplay}" LineBreakMode="WordWrap"/>
+
+            <Entry Placeholder="Add tag (ex: long sleeve)" Text="{Binding TagInput}" />
+            <Button Text="Add Tag" Command="{Binding AddTagCommand}" />
+
+            <Button Text="Save Clothing Item"
+                    BackgroundColor="#4CAF50"
+                    TextColor="White"
+                    Command="{Binding SaveItemCommand}" />
+
+            <Label Text="Saved Clothes:" FontAttributes="Bold" />
+
+            <CollectionView ItemsSource="{Binding Clothes}">
+                <CollectionView.ItemTemplate>
+                    <DataTemplate>
+                        <Frame Padding="10" Margin="5" BorderColor="Black">
+                            <VerticalStackLayout Spacing="6">
+                                <Image HeightRequest="150"
+                                       Aspect="AspectFill"
+                                       Source="{Binding ImagePath}" />
+                                <Label Text="Tags:" FontAttributes="Bold" />
+                                <FlexLayout Wrap="Wrap">
+                                    <Label Text="{Binding Tags, StringFormat='{0}'}" />
+                                </FlexLayout>
+                            </VerticalStackLayout>
+                        </Frame>
+                    </DataTemplate>
+                </CollectionView.ItemTemplate>
+            </CollectionView>
+        </VerticalStackLayout>
+    </ScrollView>
+</ContentPage>gingSystem\MainPage.xaml
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:vm="clr-namespace:ClothesTagger.ViewModels"
+             x:Class="ClothesTagger.MainPage">
+
+    <ContentPage.BindingContext>
+        <vm:MainViewModel />
+    </ContentPage.BindingContext>
+
+    <ScrollView>
+        <VerticalStackLayout Padding="20" Spacing="16">
+            <Label Text="Clothing Tagger" FontAttributes="Bold" FontSize="20"/>
+
+            <Frame HeightRequest="250" BorderColor="Gray">
+                <Image Source="{Binding SelectedImagePath}" Aspect="AspectFill"/>
+            </Frame>
+
+            <Button Text="Pick Clothing Image" Command="{Binding PickImageCommand}" />
+
+            <Label Text="Suggested Tags:" FontAttributes="Bold" />
+            <Label Text="{Binding PendingTagsDisplay}" LineBreakMode="WordWrap"/>
+
+            <Entry Placeholder="Add tag (ex: long sleeve)" Text="{Binding TagInput}" />
+            <Button Text="Add Tag" Command="{Binding AddTagCommand}" />
+
+            <Button Text="Save Clothing Item"
+                    BackgroundColor="#4CAF50"
+                    TextColor="White"
+                    Command="{Binding SaveItemCommand}" />
+
+            <Label Text="Saved Clothes:" FontAttributes="Bold" />
+
+            <CollectionView ItemsSource="{Binding Clothes}">
+                <CollectionView.ItemTemplate>
+                    <DataTemplate>
+                        <Frame Padding="10" Margin="5" BorderColor="Black">
+                            <VerticalStackLayout Spacing="6">
+                                <Image HeightRequest="150"
+                                       Aspect="AspectFill"
+                                       Source="{Binding ImagePath}" />
+                                <Label Text="Tags:" FontAttributes="Bold" />
+                                <FlexLayout Wrap="Wrap">
+                                    <Label Text="{Binding Tags, StringFormat='{0}'}" />
+                                </FlexLayout>
+                            </VerticalStackLayout>
+                        </Frame>
+                    </DataTemplate>
+                </CollectionView.ItemTemplate>
+            </CollectionView>
+        </VerticalStackLayout>
+    </ScrollView>
+</ContentPage>

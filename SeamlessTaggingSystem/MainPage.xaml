@@ -1,0 +1,83 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:vm="clr-namespace:ClothesTagger.ViewModels"
+             x:Class="ClothesTagger.MainPage">
+
+    <ContentPage.BindingContext>
+        <vm:MainViewModel />
+    </ContentPage.BindingContext>
+
+    <ScrollView>
+        <VerticalStackLayout Padding="20" Spacing="16">
+            <Label Text="Clothing Tagger" FontAttributes="Bold" FontSize="20"/>
+
+            <Frame HeightRequest="250" BorderColor="Gray">
+                <Image Source="{Binding SelectedImagePath}" Aspect="AspectFill"/>
+            </Frame>
+
+            <Button Text="Pick Clothing Image" Command="{Binding PickImageCommand}" />
+
+            <Label Text="Selected Tags:" FontAttributes="Bold" />
+            <Label Text="{Binding PendingTagsDisplay}" LineBreakMode="WordWrap"/>
+
+            <!-- Predefined tags as checkboxes -->
+            <Label Text="Choose Tags:" FontAttributes="Bold" />
+            <CollectionView x:Name="AvailableTagsView"
+                            ItemsSource="{Binding AvailableTags}"
+                            SelectionMode="None">
+                <CollectionView.ItemsLayout>
+                    <GridItemsLayout Orientation="Vertical" Span="2" />
+                </CollectionView.ItemsLayout>
+                <CollectionView.ItemTemplate>
+                    <DataTemplate>
+                        <Grid Padding="4">
+                            <CheckBox IsChecked="{Binding IsSelected, Mode=TwoWay}" />
+                            <Label Text="{Binding Name}" Margin="36,0,0,0" VerticalOptions="Center" />
+                        </Grid>
+                    </DataTemplate>
+                </CollectionView.ItemTemplate>
+            </CollectionView>
+
+            <Button Text="Save Clothing Item"
+                    BackgroundColor="#4CAF50"
+                    TextColor="White"
+                    Command="{Binding SaveItemCommand}" />
+
+            <Label Text="Saved Clothes:" FontAttributes="Bold" />
+
+            <CollectionView ItemsSource="{Binding Clothes}">
+                <CollectionView.ItemTemplate>
+                    <DataTemplate>
+                        <Frame Padding="10" Margin="5" BorderColor="Black">
+                            <VerticalStackLayout Spacing="6">
+                                <Image HeightRequest="150"
+                                       Aspect="AspectFill"
+                                       Source="{Binding ImagePath}" />
+                                <Label Text="Tags:" FontAttributes="Bold" />
+                                <FlexLayout Wrap="Wrap" BindableLayout.ItemsSource="{Binding Tags}">
+                                    <BindableLayout.ItemTemplate>
+                                        <DataTemplate>
+                                            <Frame Padding="8,4"
+                                                   Margin="4,2"
+                                                   HasShadow="False"
+                                                   CornerRadius="12"
+                                                   BorderColor="{AppThemeBinding Light=#cccccc, Dark=#555555}"
+                                                   BackgroundColor="{AppThemeBinding Light=#f2f2f2, Dark=#2b2b2b}">
+                                                <Label Text="{Binding .}"
+                                                       FontSize="12"
+                                                       TextColor="{AppThemeBinding Light=Black, Dark=White}"
+                                                       VerticalOptions="Center" />
+                                            </Frame>
+                                        </DataTemplate>
+                                    </BindableLayout.ItemTemplate>
+                                </FlexLayout>
+                            </VerticalStackLayout>
+                        </Frame>
+                    </DataTemplate>
+                </CollectionView.ItemTemplate>
+            </CollectionView>
+        </VerticalStackLayout>
+    </ScrollView>
+</ContentPage>
+
