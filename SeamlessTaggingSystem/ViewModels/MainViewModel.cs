@@ -43,15 +43,19 @@ public class MainViewModel : ViewModelBase
     public ObservableCollection<TagOption> AvailableTags { get; } = new()
     {
         // Style/occasion
-        new("Casual"), new("Formal"), new("Athletic"),
+        new("Casual"), new("Formal"), new("Semi-Formal"), new("Athletic"),
         // Seasonality
-        new("Winter"), new("Summer"),
-        // Sleeve type
-        new("Long Sleeve"), new("Short Sleeve"),
-        // Materials
-        new("Denim"), new("Cotton"), new("Wool"),
-        // Colors
-        new("Black"), new("White"), new("Blue"), new("Red"), new("Green")
+        new("Hot"), new("Warm"), new("Cool"), new("Freezing"),
+        // Shirt
+        new("Long Sleeve"), new("Short Sleeve"), new("Sleeveless"),
+        // Jacket
+        new("Vest"), new("Hoodie"), new("Jacket"),
+        // Lower body
+        new("Shorts"), new("Skirt"), new("Mid-Length Pants"), new("Long Pants"), new("Leggings"),
+        // Accessories/Misc
+        new("Shoes"), new("Socks"), new("Hats"), new("Jewelry"),
+        // Color categories
+        new("Jewel tone"), new("Pastel tone"), new("Earth tone"), new("Neutral tone"), new("Flourescent tone"), new("Shade tone")
     };
 
     // Full file path of the picked image. If image is invalid, it won't save 
